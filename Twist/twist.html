@@ -8,6 +8,9 @@
 attribute vec4 vPosition;
 uniform float angle;
 
+
+varying vec4 fragmentColor;
+
 void main()
 {
 	float r = length(vPosition);
@@ -24,10 +27,13 @@ void main()
 
 <script id="fragment-shader" type="x-shader/x-fragment">
 precision mediump float;
+uniform float red;
+uniform float green;
+uniform float blue;
 
 void main()
 {
-   gl_FragColor = vec4(0.0, 0.0, 1.0, 1.0);
+   gl_FragColor = vec4(red, green, blue, 1.0);
 }
 </script>
 
@@ -48,6 +54,10 @@ void main()
  <label for="angle">Angle (degree):</label>
   <input id="angle" type="range" min="0" max="360" step="5" value="30" oninput="printValue('angle','angleOutput')"/>
  <output id="angleOutput"></output>
+</div>
+<div>
+  <label for="color">Color:</label>
+  <input id="color" type="color" value="#FF00FF"/>
 </div>
 <div>
 <input id = "filled" type="checkbox" value="false">Filled
