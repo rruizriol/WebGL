@@ -1,1 +1,51 @@
+<!DOCTYPE html>
+<html>
 
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+  <title>Draw</title>
+
+  <script id="vertex-shader" type="x-shader/x-vertex">
+    attribute vec4 vPosition;
+    attribute vec4 vColor;
+    varying vec4 fColor;
+
+    void main() {
+      gl_Position = vPosition;
+      fColor = vColor;
+    }
+  </script>
+
+  <script id="fragment-shader" type="x-shader/x-fragment">
+    precision mediump float;
+    varying vec4 fColor;
+    void main() {
+      gl_FragColor = fColor;
+    }
+  </script>
+
+  <script type="text/javascript" src="../common/webgl-utils.js"></script>
+  <script type="text/javascript" src="../common/initShaders.js"></script>
+  <script type="text/javascript" src="../common/MV.js"></script>
+  <script type="text/javascript" src="../common/util.js"></script>
+  <script type="text/javascript" src="draw.js"></script>
+
+</head>
+
+<body>
+  <body>
+  <div>
+   <label for="depth">Line Width::</label>
+   <input id="lineWidth" type="range" min="1" max="20" step="1" value="4" oninput="printValue('lineWidth','lineWidthOutput')"/>
+   <output id="lineWidthOutput"></output>
+  </div>
+  <div>
+    <label for="color">Color:</label>
+    <input id="color" type="color" value="#FF00FF"/>
+    <input id="btClear" type="button" value="Clear" onclick="clearDraw()">
+  </div>
+  <canvas id="gl-canvas" width="512" height="512" style="border-style: solid; border-width: 1px">
+  Oops ... your browser doesn't support the HTML5 canvas element
+  </canvas>
+  </body>
+  </html>
