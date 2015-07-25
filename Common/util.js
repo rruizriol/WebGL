@@ -1,7 +1,6 @@
 function printValue(sliderID, textbox) {
      var x = document.getElementById(textbox);
      var y = document.getElementById(sliderID);
-     alert("hola");
      x.value = y.value;
 }
 
