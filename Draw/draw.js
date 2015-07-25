@@ -124,3 +124,8 @@ function clearDraw() {
   colors = [];
   points_index = 0;
 }
+
+
+
+
+
