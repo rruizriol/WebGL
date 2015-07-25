@@ -9,14 +9,14 @@ var depth = 0;
 var angle = 0.0;
 var angleLoc;
 
+var redLoc;
+var greenLoc;
+var blueLoc;
+
 var bufferId;
 
 var drawFilled = false;
-
-var redColor = 1.0;
-var greenColor = 0.0;
-var blueColor = 0.0;
-var index = 0;
+var color = "";
 
 window.onload = function init()
 {
@@ -37,7 +37,11 @@ window.onload = function init()
     gl.useProgram( program );
 
     angleLoc = gl.getUniformLocation(program, "angle");
-
+    
+    redLoc   = gl.getUniformLocation(program, "red");
+    greenLoc = gl.getUniformLocation(program, "green");
+    blueLoc  = gl.getUniformLocation(program, "blue");
+    
     // Load the data into the GPU
 
     bufferId = gl.createBuffer();
@@ -63,6 +67,11 @@ window.onload = function init()
        render();
     };
     
+    document.getElementById("color").onchange = function(event) {
+       setColor();
+       render();
+    };
+    
     document.getElementById("filled").onchange = function(event) {
        setFillValue();
        render();
@@ -70,7 +79,9 @@ window.onload = function init()
     
     setDepthValue();
     setAngleValue();
-    setFillValue();  
+    setColor();
+    setFillValue(); 
+    
     
     printValue('depth','depthOutput');
     printValue('angle','angleOutput');
@@ -88,6 +99,10 @@ function setAngleValue() {
 
   var degrees = parseInt(value);
   angle = Math.PI * degrees / 180.0;
+}
+
+function setColor() {
+   color = document.getElementById("color").value;
 }
 
 function setFillValue() {
@@ -152,11 +167,18 @@ function render()
     divideTriangle( vertices[0], vertices[1], vertices[2],
                     depth);
 
-    gl.uniform1f(angleLoc, angle);
-       
-    gl.bufferSubData(gl.ARRAY_BUFFER, 0, flatten(points));
-    gl.clear( gl.COLOR_BUFFER_BIT );
+    var rgb = hexToRgb(color);
     
+    gl.uniform1f(angleLoc, angle);
+    
+    gl.uniform1f(redLoc, rgb.r / 255.0);
+    gl.uniform1f(greenLoc, rgb.g / 255.0);
+    gl.uniform1f(blueLoc, rgb.b / 255.0);
+           
+    gl.bufferSubData(gl.ARRAY_BUFFER, 0, flatten(points));
+    gl.clear( gl.COLOR_BUFFER_BIT ); 
+    
+     
     if (drawFilled){
         gl.drawArrays( gl.TRIANGLES, 0, points.length );
     }
