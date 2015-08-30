@@ -69,6 +69,11 @@
           <input id="btAdd" type="button" value="Add" onclick="addFigure()" />
           <input id="btClear" type="button" value="Clear" onclick="clearCanvas()" />
         </div>
+        <div>
+          <input type="checkbox" id="light1" value="light1" checked onchange="changeLight(this.id, 0)">Light 1<br/>
+          <input type="checkbox" id="light2" value="light2" checked onchange="changeLight(this.id, 1)">Light 2<br/>
+          <input type="checkbox" id="light3" value="light3" checked onchange="changeLight(this.id, 2)">Light 3<br/>
+        </div>
       </div>
       <div style="float:right; width: 75%" id = "container">
       </div>
