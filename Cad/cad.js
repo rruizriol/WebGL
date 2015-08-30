@@ -92,7 +92,7 @@ function addCone() {
    var data = getAttributes();
 
    var conegeometry = new THREE.CylinderGeometry(0, data.radius, data.height, 50, false);
-   var conematerial = new THREE.MeshBasicMaterial({wireframe: true, color: data.color});
+   var conematerial = new THREE.MeshBasicMaterial({wireframe: data.wired, color: data.color});
    
    var cone = new THREE.Mesh(conegeometry, conematerial);
    
@@ -109,7 +109,7 @@ function addCube() {
   
   var cubegeometry = new THREE.BoxGeometry(data.height,data.height,data.height, 5, 5, 5);
   
-  var cubematerial = new THREE.MeshBasicMaterial( {wireframe: true, color: data.color  } );
+  var cubematerial = new THREE.MeshBasicMaterial( {wireframe: data.wired, color: data.color  } );
   var cube = new THREE.Mesh( cubegeometry, cubematerial );
   
   cube.position.set(data.x,data.y,0);
@@ -126,7 +126,7 @@ function addCylinder(){
    
    var cylindergeometry = new THREE.CylinderGeometry(data.radius, data.radius, data.height, 50, false);
 
-   var cylindermaterial = new THREE.MeshBasicMaterial({wireframe: true, color: data.color });
+   var cylindermaterial = new THREE.MeshBasicMaterial({wireframe: data.wired, color: data.color });
    var cylinder = new THREE.Mesh(cylindergeometry, cylindermaterial);
   
    cylinder.position.set(data.x,data.y,0);
