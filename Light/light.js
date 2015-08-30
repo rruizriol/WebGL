@@ -32,7 +32,6 @@ window.onload = function init() {
    
    container = document.getElementById("container");
    
-   scene = new THREE.Scene();
    camera = new THREE.PerspectiveCamera(VIEW_ANGLE, WIDTH / HEIGHT, NEAR, FAR);
    
    renderer = new THREE.WebGLRenderer();
@@ -43,7 +42,7 @@ window.onload = function init() {
    
    camera.position.z = ZCAM;
    
-   addLights();
+   clearCanvas();
    
    render();
 }
@@ -74,7 +73,7 @@ function addFigure() {
 function clearCanvas() {
   scene = new THREE.Scene();
   
-  addLights();
+  addAllLights();
 }
 
 function addShere() {
@@ -143,22 +142,42 @@ function addCylinder(){
    scene.add(cylinder);
 }
 
-function addLights() {
+function addAllLights() {
 
+  addDefaultLights();
+  addLights();
+}
+
+function addDefaultLights(){
+
+  /*
   var ambLight = new THREE.AmbientLight(0x404040 ); 
   scene.add(ambLight);
+  */
 
-  lights[0] = new THREE.PointLight( 0xffffff, 1, 0 );
-  lights[1] = new THREE.PointLight( 0xffffff, 1, 0 );
-  lights[2] = new THREE.PointLight( 0xffffff, 1, 0 );
-     			
-  lights[0].position.set( 0, 200, 0 );
-  lights[1].position.set( 100, 200, 100 );
-  lights[2].position.set( -100, -200, -100 );
-     
-  scene.add( lights[0] );
-  scene.add( lights[1] );
-  scene.add( lights[2] );
+  var hemLight = new THREE.HemisphereLight(0xffffff, 0x404040, 1);
+  scene.add(hemLight);  
+}
+
+function addLights() {
+
+  addLight("light1", 0, {x: 0, y: 200, z: 0});
+  addLight("light2", 1, {x: 100, y: 200, z: 100});
+  addLight("light3", 2, {x: -100, y: -200, z: -100});  
+}
+
+function addLight(id, index, data) {
+
+   var intensity = document.getElementById(id).checked ? 1: 0;
+
+   lights[index] = new THREE.PointLight( 0xffffff, intensity, 0 );
+   lights[index].position.set(data.x, data.y, data.z );     
+   scene.add(lights[index]);
+}
+
+function changeLight(id, index) {
+  var intensity = document.getElementById(id).checked ? 1: 0;
+  lights[index].intensity  = intensity;
 }
 
 function getAttributes() {
