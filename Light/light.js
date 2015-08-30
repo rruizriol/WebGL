@@ -36,7 +36,7 @@ window.onload = function init() {
    
    renderer = new THREE.WebGLRenderer();
    renderer.setSize(WIDTH, HEIGHT );
-   renderer.setClearColor(0xcccccc);
+   renderer.setClearColor(0x000000);
    
    container.appendChild(renderer.domElement);
    
