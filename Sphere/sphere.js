@@ -109,9 +109,8 @@
 
     function initTexture() {
         sphereTexture = gl.createTexture();
-        sphereTexture.image = new Image();
-        
         /*
+        sphereTexture.image = new Image();
         sphereTexture.image.onload = function () {
             handleLoadedTexture(sphereTexture)
         }
