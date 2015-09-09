@@ -114,6 +114,7 @@
             handleLoadedTexture(sphereTexture)
         }
         
+        alert(getTexture());
         sphereTexture.image.src = getTexture();
     }
 
