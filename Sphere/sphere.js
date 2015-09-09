@@ -117,6 +117,7 @@
         }
         */
         
+        alert("hola");
         sphereTexture.image = getTexture();
         handleLoadedTexture(sphereTexture);
     }
