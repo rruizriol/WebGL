@@ -393,6 +393,8 @@
            }
         }
         
+        alert(texture);
+        
         return texture;
     
     }
