@@ -113,8 +113,8 @@
         sphereTexture.image.onload = function () {
             handleLoadedTexture(sphereTexture)
         }
-
-        sphereTexture.image.src = "texture.gif";
+        
+        sphereTexture.image.src = getTexture();
     }
 
 
@@ -379,4 +379,20 @@
 	  mat4.multiply(newRotationMatrix, moonRotationMatrix, moonRotationMatrix);
       }
 
+    }
+    
+    function getTexture() {
+       
+       var radios = document.getElementsByName('texture');
+       var texture = "";
+       
+       for (var i = 0, length = radios.length; i < length; i++) {
+           if (radios[i].checked) {
+               texture = radios[i].value;
+               break;
+           }
+        }
+        
+        return texture;
+    
     }
