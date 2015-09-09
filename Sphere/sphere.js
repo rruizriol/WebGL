@@ -402,6 +402,8 @@
           texture = document.getElementById(textureId)
         }
         
+        alert(textureId);
+        alert(texture);
         return texture;
     
     }
