@@ -398,6 +398,8 @@
            }
         }
         
+        alert(textureId);
+        
         if (textureId.length > 0) {
           texture = document.getElementById(textureId)
         }
