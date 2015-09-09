@@ -65,11 +65,17 @@
    <div style="float:left; width: 25%">
     <input type="checkbox" id="lighting" checked /> Use lighting<br/>
     Spin the moon by dragging it with the mouse.
-    <br/>
+    <br/><br/>
 
-    <h2>Directional light:</h2>
+    <b>Texture:</b><br/>
+    <input type="radio" name="texture" id="texture1" value="moon.gif" checked onclick="javascript:initTexture()">Moon<br/>
+    <input type="radio" name="texture" id="texture2" value="board.gif" onclick="javascript:initTexture()">Board<br/>
+    <input type="radio" name="texture" id="texture3" value="logo.gif" onclick="javascript:initTexture()">Logo
 
-    <table style="border: 0; padding: 10px;">
+    <br/><br/>
+    <b>Directional light:</b>
+
+    <table style="border: 0; padding: 0px;">
         <tr><td><b>Direction:</b></td></tr>
         <tr><td>X: <input type="text" id="lightDirectionX" value="-1.0" /></td></tr>
         <tr><td>Y: <input type="text" id="lightDirectionY" value="-1.0" /></td></tr>
@@ -81,10 +87,10 @@
         <tr><td>B: <input type="text" id="directionalB" value="0.8" /></td></tr>
     </table>
 
+    <br/>
+    <b>Ambient light:</b2>
 
-    <h2>Ambient light:</h2>
-
-    <table style="border: 0; padding: 10px;">
+    <table style="border: 0; padding: 0px;">
         <tr><td><b>Colour:</b></td></tr>
         <tr><td>R: <input type="text" id="ambientR" value="0.2" /></td></tr>
         <tr><td>G: <input type="text" id="ambientG" value="0.2" /></td></tr>
