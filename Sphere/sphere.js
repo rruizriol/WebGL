@@ -109,16 +109,13 @@
 
     function initTexture() {
         sphereTexture = gl.createTexture();
-        /*
-        sphereTexture.image = new Image();
+        sphereTexture.image = new Image();        
+        
         sphereTexture.image.onload = function () {
             handleLoadedTexture(sphereTexture)
-        }
-        */
+        }        
         
-        alert("hola");
-        sphereTexture.image = getTexture();
-        handleLoadedTexture(sphereTexture);
+        sphereTexture.image.src = getTexture();
     }
 
 
@@ -388,24 +385,15 @@
     function getTexture() {
        
        var radios = document.getElementsByName('texture');
-       var textureId = "";
-       var texture;
-       
+       var texture = "";
+          
        for (var i = 0, length = radios.length; i < length; i++) {
            if (radios[i].checked) {
-               textureId = radios[i].value;
+               texture = radios[i].value;
                break;
            }
         }
         
-        alert(textureId);
-        
-        if (textureId.length > 0) {
-          texture = document.getElementById(textureId)
-        }
-        
-        alert(textureId);
-        alert(texture);
-        return texture;
+        return texture
     
     }
